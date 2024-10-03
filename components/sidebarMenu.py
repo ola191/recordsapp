@@ -11,9 +11,21 @@ class SidebarMenu(QWidget):
         super().__init__(parent)
         
         self.layout = QVBoxLayout(self)
+        
         self.layout.setSpacing(10)
         self.layout.setContentsMargins(10, 10, 10, 10)
         
+        self.setStyleSheet("""
+            QWidget {
+
+            }
+            QPushButton {
+
+            }
+            QPushButton:hover {
+            }
+        """)
+
         self.btn_dashboard = QPushButton("Dashboard")
         self.btn_analyze = QPushButton("Analyze Recordings")
         self.btn_edit = QPushButton("Edit Recordings")

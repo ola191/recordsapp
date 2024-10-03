@@ -15,6 +15,9 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.centralWidget)
         self.layout = QHBoxLayout(self.centralWidget)
 
+        self.layout.setSpacing(10)
+        self.layout.setContentsMargins(10, 10, 10, 10)
+        
         self.setDockNestingEnabled(True)
         
         self.sidebarMenu = SidebarMenu(self)
