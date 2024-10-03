@@ -13,13 +13,21 @@ class ContentArea(QWidget):
         self.dock2.setWidget(QLabel("Dock 2 Content"))
         self.dock3 = QDockWidget("Dock 3", self)
         self.dock3.setWidget(QLabel("Dock 3 Content"))
+        self.dock4 = QDockWidget("Dock 4", self)
+        self.dock4.setWidget(QLabel("Dock 4 Content"))
+        self.dock5 = QDockWidget("Dock 5", self)
+        self.dock5.setWidget(QLabel("Dock 5 Content"))
 
         self.layout.addWidget(self.dock1)
         self.layout.addWidget(self.dock2)
         self.layout.addWidget(self.dock3)
+        self.layout.addWidget(self.dock4)
+        self.layout.addWidget(self.dock5)
         
         self.dock2.hide()
         self.dock3.hide()
+        self.dock4.hide()
+        self.dock5.hide()
         
         self.setLayout(self.layout)
         
@@ -27,6 +35,8 @@ class ContentArea(QWidget):
         self.dock1.hide()
         self.dock2.hide()
         self.dock3.hide()
+        self.dock4.hide()
+        self.dock5.hide()
 
         if dockName == "dock1":
             self.dock1.show()
@@ -34,3 +44,7 @@ class ContentArea(QWidget):
             self.dock2.show()
         elif dockName == "dock3":
             self.dock3.show()
+        elif dockName == "dock4":
+            self.dock4.show()
+        elif dockName == "dock5":
+            self.dock5.show()
