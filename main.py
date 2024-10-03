@@ -32,8 +32,8 @@ class MainWindow(QMainWindow):
         width = self.width()
         height = self.height()
 
-        self.sidebarMenu.setFixedWidth(width * 0.2)
-        self.contentArea.setFixedWidth(width * 0.8)
+        self.sidebarMenu.setFixedWidth(width * 0.175)
+        self.contentArea.setFixedWidth(width * 0.825)
         
         super().resizeEvent(event)
 

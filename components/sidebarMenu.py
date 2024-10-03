@@ -1,6 +1,6 @@
 import subprocess
 import sys
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QMessageBox, QSpacerItem, QSizePolicy
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QMessageBox, QSpacerItem, QSizePolicy, QHBoxLayout, QLabel
 from PySide6.QtCore import Signal, QSize, Qt
 from PySide6.QtGui import QIcon, QFont
 
@@ -19,15 +19,22 @@ class SidebarMenu(QWidget):
         
         self.setStyleSheet("""
             QWidget {
-                background-color: #D6BFEB;
             }
             QPushButton {
                 text-align: left;
                 background: transparent;
             }
+            QIcon {
+                padding: 0 10px;
+            }
         """)
 
         self.btn_dashboard = self.createButton("Dashboard", "./icons/dashboard.png")
+        self.btn_dashboard.setStyleSheet("""
+            QPushButton {
+                background: rgba(0, 0, 0, 0.2);
+            }
+        """)
         self.btn_analyze = self.createButton("Analyze Recordings", "./icons/analyzing.png")
         self.btn_edit = self.createButton("Edit Recordings", "./icons/editing.png")
         self.btn_settings = self.createButton("Settings", "./icons/settings.png")
@@ -51,12 +58,29 @@ class SidebarMenu(QWidget):
         self.btn_profile.clicked.connect(lambda: self.changeDockRequested.emit("dock5"))
         
     def createButton(self, text, iconPath):
-        button = QPushButton(text)
+        button = QPushButton()
+        button.setStyleSheet("""
+            QPushButton:hover {
+                background: rgba(0, 0, 0, 0.1);
+            }
+        """)
+        button.setFont(QFont("Arial", 24))
         # button.setLayoutDirection(Qt.RightToRight)
         icon = QIcon(iconPath)
-        button.setIcon(icon)
-        button.setIconSize(QSize(24, 24))
-        button.setFont(QFont("Arial", 12))
+        iconLabel = QLabel()
+        iconLabel.setPixmap(icon.pixmap(24, 24))
+        iconLabel.setFixedSize(24, 24)
+
+        textLabel = QLabel(text)
+        
+        layout = QHBoxLayout()
+        
+        layout.setSpacing(10)
+        
+        layout.addWidget(iconLabel)
+        layout.addWidget(textLabel)
+        
+        button.setLayout(layout)
         return button
     
 if __name__ == "__main__":
