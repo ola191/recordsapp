@@ -10,6 +10,12 @@ class ContentArea(QWidget):
         self.layout.setSpacing(10)
         self.layout.setContentsMargins(10, 10, 10, 10)
         
+        self.setStyleSheet("""
+            QWidget {
+                background-color: white;
+            }
+        """)
+
         self.dock1 = QDockWidget("Dock 1", self)
         self.dock1.setWidget(QLabel("Dock 1 Content"))
         self.dock2 = QDockWidget("Dock 2", self)
