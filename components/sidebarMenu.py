@@ -57,6 +57,8 @@ class SidebarMenu(QWidget):
         self.btn_settings.clicked.connect(lambda: self.changeDockRequested.emit("dock4"))
         self.btn_profile.clicked.connect(lambda: self.changeDockRequested.emit("dock5"))
         
+        self.buttons = [self.btn_dashboard, self.btn_analyze, self.btn_edit, self.btn_settings, self.btn_profile]
+        
     def createButton(self, text, iconPath):
         button = QPushButton()
         button.setStyleSheet("""
@@ -81,7 +83,16 @@ class SidebarMenu(QWidget):
         layout.addWidget(textLabel)
         
         button.setLayout(layout)
+        
+        button.clicked.connect(lambda: self.changeButtonColor(button))
+        
         return button
     
+    
+    def changeButtonColor(self, clicked_button):
+        for button in self.buttons:
+            button.setStyleSheet("background: transparent;")
+
+        clicked_button.setStyleSheet("background-color: rgba(0, 0, 0, 0.2);")
 if __name__ == "__main__":
     subprocess.Popen([sys.executable, './main.py'])
